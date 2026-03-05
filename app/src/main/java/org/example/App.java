@@ -6,7 +6,7 @@ public class App {
     Scanner sc = new Scanner(System.in);
 
     while (true) {
-      System.out.println("Welcome o Tic-Tac-Toe!");
+      System.out.println("Welcome to Tic-Tac-Toe!");
       Game game = new Game();
       game.play(); 
 
