@@ -5,12 +5,12 @@ public class Game {
     private Board board;
     private char currentPlayer;
 
-    public Game() {
+    public Game(char startingPlayer) {
         board = new Board();
-        currentPlayer = 'X';
+        currentPlayer = startingPlayer;
     }
 
-    public void play() {
+    public char play() {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -37,13 +37,14 @@ public class Game {
             if (board.checkWin(currentPlayer)) {
                 board.printBoard();
                 System.out.println("Player " + currentPlayer + " wins!");
-                break;
+                
+                return (currentPlayer == 'X') ? 'O' : 'X';
             }
 
             if (board.isDraw()) {
                 board.printBoard();
                 System.out.println("It's a draw!");
-                break;
+                return 'T';
             }
 
             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
