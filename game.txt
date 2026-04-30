@@ -1,5 +1,5 @@
 Final Game Statistics:
 -----------------------
-Player X Wins: 1
-Player O Wins: 0
-Ties: 0
+Player X Wins: 7
+Player O Wins: 2
+Ties: 1

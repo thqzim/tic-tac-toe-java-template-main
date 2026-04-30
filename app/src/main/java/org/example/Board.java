@@ -57,5 +57,15 @@ public class Board {
         System.out.println(" " + cells[6] + " | " + cells[7] + " | " + cells[8]);
         System.out.println();
      }
+
+
+     public boolean wouldWin(char mark, int position) {
+        if (!isValidMove(position)) return false;
+        char original = cells[position - 1];
+        cells[position - 1] = mark;
+        boolean win = checkWin(mark);
+        cells[position - 1] = original;
+        return win;
+     }
 }
     
