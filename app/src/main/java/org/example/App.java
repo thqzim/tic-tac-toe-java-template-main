@@ -10,8 +10,50 @@ public class App {
 
     while (true) {
       System.out.println("Welcome to Tic-Tac-Toe!");
-      Game game = new Game(startingPlayer);
-      char result = game.play(); 
+
+      boolean xIsComputer = false;
+      boolean oIsComputer = false;
+
+      System.out.println("What kind of game would you like to play?\n");
+      System.out.println("1. Human vs Human");
+      System.out.println("2. Human vs Computer");
+      System.out.println("3. Computer vs Human\n");
+
+      int selection = 0;
+      while (true) {
+        System.out.println("What is your selection? ");
+        String input = sc.nextLine().trim();
+        try {
+            selection = Integer.parseInt(input);
+        } catch (Exception e) {
+          System.out.println("That is not valid selection! Try again.");
+          continue;
+        }
+        if (selection < 1 || selection > 3) {
+          System.out.println("That is not a valid selecion! Try again.");
+        } else break;
+      }
+
+      if (selection == 1) {
+        System.out.println("\nGreat! Human vs. Human.\n");
+        xIsComputer = false;
+        oIsComputer = false;
+      } else if (selection == 2) {
+        System.out.println("\nGreat! Human vs. Computer. The human will go first.\n");
+        xIsComputer = false;
+        oIsComputer = true;
+        startingPlayer = 'X';
+
+      } else {
+        System.out.println("\nGreat! Computer vs. Human. The computer will go first.\n");
+        xIsComputer = true;
+        oIsComputer = false;
+        startingPlayer = 'X';
+      }
+
+      Game game = new Game(startingPlayer, xIsComputer, oIsComputer);
+
+      char result = game.play();
 
       if (result == 'T') {
         log.recordTie();
@@ -33,13 +75,7 @@ public class App {
          break;
       }
 
-      if (result == 'T') {
-        startingPlayer = (startingPlayer == 'X') ? 'O' : 'X';
-      } else {
-        startingPlayer = result;
-      }
-
-      System.out.println("\nGood! This time " + startingPlayer + " will go first!\n");
+      System.out.println("\nGood! Starting a new game!\n");
         
     }
   }
